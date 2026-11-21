@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Sky Full of Blue Flowers & Chocolate</title>
+<style>
+:root{--midnight:#06122d;--blue:#8eb6ff;--ice:#e5efff;--gold:#f4d9a0}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 50% 38%,#233f78 0%,#10234d 42%,#050b1d 100%);color:#f7f3ff;font-family:Georgia,serif}
+#rain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.starfield{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(2px 2px at 12% 22%,#fff9 99%,transparent),radial-gradient(1px 1px at 70% 15%,#fff 99%,transparent),radial-gradient(2px 2px at 83% 65%,#a9caff 99%,transparent),radial-gradient(1px 1px at 32% 78%,#fff 99%,transparent);background-size:190px 170px;opacity:.6}
+main{position:relative;z-index:2;min-height:100vh;text-align:center;padding:52px 14px 80px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#c4d8ff}
+h1{font-weight:400;font-size:clamp(2.3rem,7vw,5rem);line-height:1.02;margin:15px 0 12px;text-shadow:0 0 35px #a2c3ff66}
+.sub{color:#d8e4ff;margin:0 auto 22px;max-width:560px;font-size:1.05rem;line-height:1.6}
+.stage{height:365px;max-width:680px;margin:auto;position:relative;display:grid;place-items:center}
+.halo{position:absolute;width:370px;height:110px;bottom:34px;border-radius:50%;background:#87b4ff66;filter:blur(45px)}
+.gift{position:relative;width:250px;height:190px;filter:drop-shadow(0 22px 26px #0008);transition:transform 1s;z-index:2}
+.boxbase{position:absolute;bottom:0;left:8px;width:234px;height:145px;border:2px solid #d8e6ff;background:linear-gradient(120deg,#a9c7ff 0%,#527bd0 45%,#29478f 100%);box-shadow:inset 0 0 28px #fff7}
+.boxbase:before{content:"";position:absolute;left:99px;top:0;height:100%;width:34px;background:linear-gradient(90deg,#fff,#94b4ff,#fff)}
+.boxbase:after{content:"";position:absolute;left:0;top:0;width:100%;height:14px;background:#e6efff88}
+.lid{position:absolute;top:0;left:0;width:250px;height:52px;border:2px solid #eff5ff;background:linear-gradient(110deg,#d9e7ff,#7da0ef 58%,#4c6ec0);transform-origin:12% 90%;transition:transform 1.25s cubic-bezier(.2,.8,.2,1);z-index:4;box-shadow:0 8px 16px #0005}
+.lid:before{content:"";position:absolute;left:106px;width:34px;height:100%;background:linear-gradient(90deg,#fff,#91b0ff,#fff)}
+.bow{position:absolute;top:-36px;left:84px;width:80px;height:40px}
+.bow:before,.bow:after{content:"";position:absolute;width:48px;height:28px;border:9px solid #e7efff;border-radius:85% 15% 80% 20%;transform:rotate(25deg);filter:drop-shadow(0 0 8px #b8d0ff)}
+.bow:after{left:28px;transform:scaleX(-1) rotate(25deg)}
+.bow i{position:absolute;left:29px;top:12px;width:20px;height:20px;border-radius:50%;background:#fff;z-index:2}
+.flower-corner{position:absolute;font-size:34px;filter:drop-shadow(0 0 12px #8bb7ff);animation:sway 4s ease-in-out infinite}
+.fc1{left:5%;top:20%}.fc2{right:5%;top:17%;animation-delay:-1s}.fc3{left:9%;bottom:12%;animation-delay:-2s}.fc4{right:8%;bottom:10%;animation-delay:-.7s}
+@keyframes sway{50%{transform:translateY(-14px) rotate(12deg)}}
+button{border:1px solid #e6efff;border-radius:40px;padding:14px 25px;background:linear-gradient(130deg,#edf4ff,#9dbdff);color:#152c5d;font-weight:bold;letter-spacing:.07em;cursor:pointer;box-shadow:0 8px 26px #8bb5ff66;transition:.2s}
+button:hover{transform:translateY(-3px);box-shadow:0 12px 34px #8bb5ff99}
+#open{margin-top:2px}
+.hint{font:11px Arial,sans-serif;letter-spacing:.2em;color:#cbdcff;margin:12px 0}
+.reveal{display:none;max-width:760px;margin:28px auto 0;animation:rise .9s both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.note{background:linear-gradient(145deg,#fffaff,#eaf1ff);color:#293b69;padding:25px 24px;border-radius:22px;border:1px solid #fff;box-shadow:0 16px 50px #0006;line-height:1.75}
+.note h2{font-weight:400;font-size:clamp(1.8rem,5vw,2.8rem);color:#4265ad;margin:0 0 8px}
+.note p{margin:8px 0}
+.choco-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:20px 0}
+.choco{width:90px;height:65px;position:relative;display:grid;place-items:center;animation:chocofloat 3s ease-in-out infinite;filter:drop-shadow(0 9px 7px #0006)}
+.choco:nth-child(2){animation-delay:-.8s}.choco:nth-child(3){animation-delay:-1.5s}.choco:nth-child(4){animation-delay:-2s}
+@keyframes chocofloat{50%{transform:translateY(-10px) rotate(3deg)}}
+.wrapper{position:absolute;inset:9px 3px;background:linear-gradient(110deg,#3a160d,#8d4a26 25%,#2a100c 50%,#9b5a2e 75%,#32130d);border:1px solid #d9ad73;clip-path:polygon(9% 0,91% 0,100% 50%,91% 100%,9% 100%,0 50%);box-shadow:inset 0 0 9px #f6d5a455}
+.wrapper:before{content:"";position:absolute;left:0;right:0;top:5px;height:3px;background:#f4d9a077}
+.wrapper:after{content:"";position:absolute;left:0;right:0;bottom:5px;height:3px;background:#f4d9a055}
+.choco b{position:relative;z-index:1;color:#f8e2b4;font: bold 9px Arial,sans-serif;letter-spacing:.1em;text-shadow:0 1px 3px #000}
+.truffle{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#a86b40,#542718 42%,#1d0b08 78%);box-shadow:inset -5px -8px 10px #0008,inset 4px 4px 8px #f1c18b55,0 8px 9px #0006;position:relative;animation:chocofloat 3.2s infinite}
+.truffle:after{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dotted #d9b27c88}
+.letterbtn{margin-top:14px;background:linear-gradient(120deg,#ffe8f4,#d5e3ff)}
+#letter{display:none;background:#fff7fb;color:#33436d;padding:18px;border-radius:16px;margin-top:14px}
+.footer{margin-top:28px;color:#c4d5ff;font:11px Arial,sans-serif;letter-spacing:.12em}
+.falling{position:absolute;top:-130px;left:0;will-change:transform;animation:fall var(--dur) linear forwards;filter:drop-shadow(0 7px 6px #0006)}
+@keyframes fall{to{transform:translate3d(var(--dx),115vh,0) rotate(var(--rot))}}
+.rainflower{width:56px;height:56px}
+.rainchoco{width:72px;height:48px}
+@media(max-width:500px){main{padding-top:38px}.stage{height:315px}.gift{transform:scale(.85)}.flower-corner{font-size:26px}.rainflower{width:42px;height:42px}.rainchoco{width:58px;height:39px}}
+</style>
+</head>
+<body>
+<div class="starfield"></div><div id="rain"></div>
+<main>
+ <div class="eyebrow">a little universe made just for you</div>
+ <h1>To my birthday girl</h1>
+ <p class="sub">A box full of blue blooms, sweet little treats, and all the love in my heart.</p>
+ <div class="stage">
+  <div class="halo"></div>
+  <div class="flower-corner fc1">🪻</div><div class="flower-corner fc2">💠</div><div class="flower-corner fc3">🌸</div><div class="flower-corner fc4">🦋</div>
+  <div class="gift" id="gift">
+   <div class="boxbase"></div>
+   <div class="lid" id="lid"><div class="bow"><i></i></div></div>
+  </div>
+ </div>
+ <div class="hint" id="hint">SOME MAGIC IS WAITING INSIDE</div>
+ <button id="open">UNTIE THE RIBBON & OPEN ✨</button>
+ <section class="reveal" id="reveal">
+  <div class="choco-row">
+   <div class="choco"><span class="wrapper"></span><b>CHOCO<br>LOVE</b></div>
+   <div class="truffle"></div>
+   <div class="choco"><span class="wrapper"></span><b>SWEET<br>FOR YOU</b></div>
+   <div class="truffle"></div>
+  </div>
+  <div class="note">
+   <h2>Happy Birthday, my love 💙</h2>
+   <p>Imagine this little world pouring out just for you: blue flowers without end, chocolates as sweet as you, and a sky full of tiny wishes.</p>
+   <p>I hope today wraps you in happiness and reminds you how loved and special you are. You deserve every beautiful thing.</p>
+   <button class="letterbtn" id="letterbtn">A SECRET NOTE FOR YOU 💌</button>
+   <div id="letter">My favourite person,<br><br>May your days bloom like a garden and your life always have a little sweetness in it. Thank you for being you. I’m sending you the biggest birthday wish, a thousand flowers, and all my love.<br><br>Always yours. 💙</div>
+  </div>
+ </section>
+ <div class="footer">BLUE FLOWERS • CHOCOLATE • A LITTLE FOREVER</div>
+</main>
+<script>
+const rain=document.getElementById('rain');
+const flowerSVG=`<svg class="rainflower" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="p"><stop stop-color="#f4f8ff"/><stop offset=".42" stop-color="#a9caff"/><stop offset="1" stop-color="#4779d9"/></radialGradient><radialGradient id="c"><stop stop-color="#fff8d9"/><stop offset="1" stop-color="#d8a94e"/></radialGradient></defs>
+<g transform="translate(50 50)"><g fill="url(#p)" stroke="#d9e8ff" stroke-width="1.2">
+<ellipse rx="14" ry="31" cy="-21"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(45)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(90)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(135)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(180)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(225)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(270)"/><ellipse rx="14" ry="31" cy="-21" transform="rotate(315)"/></g><circle r="10" fill="url(#c)"/><circle r="3" fill="#fff5c5"/></g></svg>`;
+const chocoSVG=`<svg class="rainchoco" viewBox="0 0 120 78" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="foil" x2="0" y2="1"><stop stop-color="#f2d7a3"/><stop offset=".25" stop-color="#8b4a24"/><stop offset=".55" stop-color="#3b170e"/><stop offset="1" stop-color="#b77b42"/></linearGradient><linearGradient id="bar"><stop stop-color="#4a1e12"/><stop offset=".5" stop-color="#9a5630"/><stop offset="1" stop-color="#35130c"/></linearGradient></defs>
+<path d="M9 18L22 9H98L111 18L105 60L94 69H25L14 60Z" fill="url(#foil)" stroke="#f4d9a0" stroke-width="2"/><path d="M22 18H98V60H22Z" fill="url(#bar)" stroke="#e8c48c" stroke-width="1.5"/><path d="M22 32H98M22 46H98M47 18V60M73 18V60" stroke="#d59a61" stroke-width="2" opacity=".8"/><path d="M15 21L22 27V53L14 59M105 21L98 27V53L106 59" fill="none" stroke="#ffe7b7" stroke-width="2" opacity=".7"/><text x="60" y="42" font-family="Georgia" font-size="9" text-anchor="middle" fill="#ffebc7">SWEET LOVE</text></svg>`;
+function drop(kind){const el=document.createElement('div');el.className='falling';el.innerHTML=kind==='flower'?flowerSVG:chocoSVG;el.style.left=Math.random()*100+'vw';el.style.setProperty('--dur',(5+Math.random()*5)+'s');el.style.setProperty('--dx',(Math.random()*180-90)+'px');el.style.setProperty('--rot',(Math.random()*540-270)+'deg');el.style.opacity=.8+Math.random()*.2;el.style.transform=`scale(${.65+Math.random()*.7})`;rain.appendChild(el);setTimeout(()=>el.remove(),11000)}
+let rainTimer=null,opened=false;
+function startRain(){if(rainTimer)return;rainTimer=setInterval(()=>{drop(Math.random()<.57?'flower':'choco');if(Math.random()<.6)drop('flower');},125)}
+document.getElementById('open').addEventListener('click',()=>{
+ if(opened){for(let i=0;i<12;i++)setTimeout(()=>drop(i%3?'flower':'choco'),i*65);return}
+ opened=true;document.getElementById('lid').style.transform='translateY(-110px) rotate(-24deg)';document.getElementById('gift').style.transform='translateY(12px) scale(1.04)';document.getElementById('hint').textContent='A RAIN OF FLOWERS & CHOCOLATE — JUST FOR YOU 💙';document.getElementById('open').textContent='MORE MAGIC PLEASE ✨';document.getElementById('reveal').style.display='block';startRain();for(let i=0;i<50;i++)setTimeout(()=>drop(i%3?'flower':'choco'),i*45);setTimeout(()=>document.getElementById('reveal').scrollIntoView({behavior:'smooth',block:'start'}),450)
+});
+document.getElementById('letterbtn').addEventListener('click',()=>{const l=document.getElementById('letter');l.style.display=l.style.display==='block'?'none':'block';for(let i=0;i<12;i++)setTimeout(()=>drop('flower'),i*80)});
+</script>
+</body>
+</html>
